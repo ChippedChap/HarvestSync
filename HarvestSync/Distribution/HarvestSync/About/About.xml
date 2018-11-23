@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+	<name>Harvest Sync</name>
+	<author>ChippedChap</author>
+	<url>https://github.com/ChippedChap/HarvestSync</url>
+	<targetVersion>1.0.0</targetVersion>
+	<description>Version 1.0.0
+
+A mod that lets you set certain zones to only be harvested when all plants in the zone has fully grown.
+	
+A version that works with hydroponics will be coming soon!
+	
+Also lets you disable harvesting in zones completely.
+	
+You can set zones to be harvested in 'sync' or to be never harvested by clicking the "Harvest: &lt;Setting&gt;" button. The checkmark on the button indicates if the zone can currently be harvested.
+	
+After all plants in a zone fully grow, the zone stays fully harvestable until all mature plants have been harvested. This allows colonists to continue harvesting zones as they plant new crops.\
+
+If something makes a plant instantaneously come to maturity or die, there may be some delay in the zone being harvestable or not because of the relatively low frequency of checks for harvestability.
+	
+Please report any problems you find with this mod.
+	</description>
+</ModMetaData>

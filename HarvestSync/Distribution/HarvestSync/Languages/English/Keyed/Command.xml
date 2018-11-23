@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<SetHarvestSettingRoot>Harvest:{0}</SetHarvestSettingRoot>
+	
+	<SettingAlwaysHarvest>\nAlways</SettingAlwaysHarvest>
+	<SettingNeverHarvest>\nNever</SettingNeverHarvest>
+	<SettingSyncHarvest>\nSync</SettingSyncHarvest>
+	
+	<SettingAlwaysHarvestDesc>Plants in this zone will always be harvested.</SettingAlwaysHarvestDesc>
+	<SettingNeverHarvestDesc>Plants in this zone will never be harvested.</SettingNeverHarvestDesc>
+	<SettingSyncHarvestDesc>Plants in this zone will only be harvested if all other plants in the zone are mature.\n\nAfter all plants in a zone mature, the zone remains harvestable until there are no longer mature plants, regardless of newly sown plants.</SettingSyncHarvestDesc>
+</LanguageData>
