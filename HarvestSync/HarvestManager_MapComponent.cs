@@ -50,6 +50,7 @@ namespace HarvestSync
 				else
 				{
 					harvestSettings[zone] = setting;
+					if (setting == HarvestSetting.SyncHarvest) RecalculateFullyGrownZones();
 				}
 			}
 			else
