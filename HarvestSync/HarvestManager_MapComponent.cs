@@ -81,53 +81,20 @@ namespace HarvestSync
 			}
 		}
 
-		private bool ZoneHasHarvestableIntendedPlants(Zone zone)
-		{
-			ThingDef[] intendedPlants = GetIntendedGrownPlants(zone);
-			for (int i = 0; i < zone.Cells.Count; i++)
-			{
-				Plant plant = zone.Cells[i].GetPlant(map);
-				if (plant == null) continue;
-				if (intendedPlants.Contains(plant.def) && plant.HarvestableNow) return true;
-			}
-			return false;
-		}
-
-		private ThingDef[] GetIntendedGrownPlants(Zone zone)
-		{
-			if (zone is Zone_Growing growingZone)
-			{
-				return new ThingDef[] { growingZone.GetPlantDefToGrow() };
-			}
-			return new ThingDef[] { };
-		}
-
-		private bool AllPlantsMatureInZone(Zone zone)
-		{
-			ThingDef[] plantDefsGrowing = GetIntendedGrownPlants(zone);
-			for (int i = 0; i < zone.Cells.Count; i++)
-			{
-				Plant plant = zone.Cells[i].GetPlant(map);
-				if (plant == null) continue;
-				if (!plant.HarvestableNow && plantDefsGrowing.Contains(plant.def)) return false;
-			}
-			return true;
-		}
-
 		private void RecalculateFullyGrownZones()
 		{
 			foreach (Zone zone in new HashSet<Zone>(fullyGrownZones))
 			{
-				if (!ZoneHasHarvestableIntendedPlants(zone))
+				if (!zone.HasHarvestableIntendedPlants())
 				{
 					fullyGrownZones.Remove(zone);
 				}
 			}
 			foreach(KeyValuePair<Zone, HarvestSetting> zoneAndSetting in harvestSettings)
 			{
-				if (zoneAndSetting.Value == HarvestSetting.SyncHarvest && AllPlantsMatureInZone(zoneAndSetting.Key))
+				if (zoneAndSetting.Value == HarvestSetting.SyncHarvest && zoneAndSetting.Key.PlantsMatureInZone())
 				{
-					if (AllPlantsMatureInZone(zoneAndSetting.Key))
+					if (zoneAndSetting.Key.PlantsMatureInZone())
 					{
 						fullyGrownZones.Add(zoneAndSetting.Key);
 					}

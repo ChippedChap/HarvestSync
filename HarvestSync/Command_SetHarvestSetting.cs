@@ -8,9 +8,9 @@ namespace HarvestSync
 {
 	class Command_SetHarvestSetting : Command
 	{
-		private Zone growingZone;
-		private HarvestManager_MapComponent harvestManager;
-		private bool currentlyCanHarvest;
+		private readonly Zone growingZone;
+		private readonly HarvestManager_MapComponent harvestManager;
+		private readonly bool currentlyCanHarvest;
 
 		private HarvestSetting ZoneSetting => harvestManager.GetHarvestSetting(growingZone);
 
