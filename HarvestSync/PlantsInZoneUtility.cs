@@ -1,11 +1,17 @@
 ﻿using RimWorld;
 using System.Linq;
+using UnityEngine;
 using Verse;
 
 namespace HarvestSync
 {
 	static class PlantsInZoneUtility
 	{
+		public static int GetProportionNumber(int total, float proportion)
+		{
+			return (int)(total * Mathf.Clamp01(proportion));
+		}
+
 		public static bool HasHarvestableIntendedPlants(this Zone zone)
 		{
 			ThingDef[] intendedPlants = GetIntendedPlants(zone);
@@ -27,16 +33,22 @@ namespace HarvestSync
 			return new ThingDef[] { };
 		}
 
-		public static bool PlantsMatureInZone(this Zone zone)
+		public static bool PlantsMatureInZone(this Zone zone, float proportion)
 		{
 			ThingDef[] plantDefsGrowing = GetIntendedPlants(zone);
+			int intended = 0;
+			int harvestableIntended = 0;
 			for (int i = 0; i < zone.Cells.Count; i++)
 			{
 				Plant plant = zone.Cells[i].GetPlant(zone.Map);
 				if (plant == null) continue;
-				if (!plant.HarvestableNow && plantDefsGrowing.Contains(plant.def)) return false;
+				if (plantDefsGrowing.Contains(plant.def))
+				{
+					intended++;
+					if (plant.HarvestableNow) harvestableIntended++;
+				}
 			}
-			return true;
+			return harvestableIntended >= GetProportionNumber(intended, proportion);
 		}
 	}
 }
