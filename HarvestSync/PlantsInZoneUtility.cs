@@ -33,6 +33,19 @@ namespace HarvestSync
 			return new ThingDef[] { };
 		}
 
+		public static int GetNumberOfIntendedPlants(this Zone zone)
+		{
+			ThingDef[] intendedDefs = zone.GetIntendedPlants();
+			int number = 0;
+			for (int i = 0; i < zone.Cells.Count; i++)
+			{
+				Plant plant = zone.Cells[i].GetPlant(zone.Map);
+				if (plant == null) continue;
+				if (intendedDefs.Contains(plant.def)) number++;
+			}
+			return number;
+		}
+
 		public static bool PlantsMatureInZone(this Zone zone, float proportion)
 		{
 			ThingDef[] plantDefsGrowing = GetIntendedPlants(zone);

@@ -20,9 +20,14 @@ namespace HarvestSync
 			return (harvestSettingPrefix + setting.ToString()).Translate();
 		}
 
-		public static string GetDescription(this HarvestSetting setting)
+		public static string GetDescription(this HarvestSetting setting, int percent, int number, int total)
 		{
-			return (harvestSettingPrefix + setting.ToString() + harvestDescriptionSuffix).Translate();
+			string baseString = harvestSettingPrefix + setting.ToString() + harvestDescriptionSuffix;
+			if (setting == HarvestSetting.SyncHarvest)
+			{
+				return baseString.Translate(percent, number, total);
+			}
+			return baseString.Translate();
 		}
 
 		public static HarvestSetting Next(this HarvestSetting setting)

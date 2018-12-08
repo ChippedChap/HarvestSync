@@ -56,7 +56,6 @@ namespace HarvestSync
 				else
 				{
 					harvestSettings[zone] = setting;
-					if (setting == HarvestSetting.SyncHarvest) RecalculateFullyGrownZones();
 				}
 			}
 			else
@@ -65,8 +64,8 @@ namespace HarvestSync
 				{
 					harvestSettings.Add(zone, setting);
 				}
-
 			}
+			RecalculateFullyGrownZones(false);
 		}
 
 		public void SetHarvestProportion(Zone zone, float proportion)
@@ -87,7 +86,7 @@ namespace HarvestSync
 			{
 				harvestProportions.Add(zone, proportion);
 			}
-			RecalculateFullyGrownZones();
+			RecalculateFullyGrownZones(false);
 		}
 
 		public HarvestSetting GetHarvestSetting(Zone zone)
@@ -113,11 +112,11 @@ namespace HarvestSync
 			}
 		}
 
-		private void RecalculateFullyGrownZones()
+		private void RecalculateFullyGrownZones(bool keepZonesWithHarvestables = true)
 		{
 			foreach (Zone zone in new HashSet<Zone>(fullyGrownZones))
 			{
-				if (!zone.HasHarvestableIntendedPlants())
+				if (!keepZonesWithHarvestables || !zone.HasHarvestableIntendedPlants())
 				{
 					fullyGrownZones.Remove(zone);
 				}

@@ -11,7 +11,7 @@ namespace HarvestSync
 	{
 		static void Postfix(ref IEnumerable<Gizmo> __result, Zone_Growing __instance)
 		{
-			Command_SetHarvestSetting harvestSync = new Command_SetHarvestSetting(__instance, __instance.Map.GetComponent<HarvestManager_MapComponent>());
+			Command_SetHarvestSetting harvestSync = new Command_SetHarvestMode(__instance, __instance.Map.GetComponent<HarvestManager_MapComponent>());
 			__result = AppendGizmoToEnumerable(__result, harvestSync);
 		}
 

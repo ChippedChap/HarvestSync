@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command_SetHarvestMode.cs" />
     <Compile Include="Command_SetHarvestSetting.cs" />
     <Compile Include="Patches\GrowingZoneGetGizmosPatcher.cs" />
     <Compile Include="HarvestManager_MapComponent.cs" />
@@ -127,6 +128,6 @@ rmdir /s /q "%25RIM_DIR%25\Mods\%25ModName%25"
 xcopy /E /Y "$(ProjectDir)Distribution\*" "%25RIM_DIR%25\Mods"
 
 
-@echo Build/deploy complete!</PostBuildEvent>
+@echo Build/deploy complete at %25time%25!</PostBuildEvent>
   </PropertyGroup>
 </Project>
