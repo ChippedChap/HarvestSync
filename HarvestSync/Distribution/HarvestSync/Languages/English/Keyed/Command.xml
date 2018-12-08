@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-	<SetHarvestSettingRoot>Harvest:{0}</SetHarvestSettingRoot>
+	<SetHarvestSettingRoot>Harvest:\n{0}</SetHarvestSettingRoot>
 	
-	<SettingAlwaysHarvest>\nAlways</SettingAlwaysHarvest>
-	<SettingNeverHarvest>\nNever</SettingNeverHarvest>
-	<SettingSyncHarvest>\nSync</SettingSyncHarvest>
+	<SettingAlwaysHarvest>Always</SettingAlwaysHarvest>
+	<SettingNeverHarvest>Never</SettingNeverHarvest>
+	<SettingSyncHarvest>Sync</SettingSyncHarvest>
 	
 	<SettingAlwaysHarvestDesc>Plants in this zone will always be harvested.</SettingAlwaysHarvestDesc>
 	<SettingNeverHarvestDesc>Plants in this zone will never be harvested.</SettingNeverHarvestDesc>
