@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using UnityEngine;
 using Verse;
 
@@ -10,16 +11,11 @@ namespace HarvestSync
 
 		public Command_SetHarvestMode(Zone zone, HarvestManager_MapComponent manager) : base(zone, manager)
 		{
-			if (ZoneSetting == HarvestSetting.SyncHarvest)
-			{
-				defaultLabel = "SetHarvestSettingRootSync".Translate(ZoneSetting.Translate(), ProportionAsPercent);
-			}
-			else
-			{
-				defaultLabel = "SetHarvestSettingRoot".Translate(ZoneSetting.Translate());
-			}
-			
-			defaultDesc = ZoneSetting.GetDescription(ProportionAsPercent, ProportionNumber, numIntendedPlants);
+			defaultLabel = "SetHarvestSettingRoot".Translate(ZoneSetting.Translate());
+			defaultDesc = "SetHarvestSettingDescFirstLine".Translate();
+			defaultDesc += Environment.NewLine;
+			defaultDesc += Environment.NewLine;
+			defaultDesc += ZoneSetting.GetDescription(ProportionAsPercent, ProportionNumber, numIntendedPlants);
 			icon = TexCommand.ForbidOff;
 		}
 

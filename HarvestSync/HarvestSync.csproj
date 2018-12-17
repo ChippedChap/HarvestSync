@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command_SetHarvestMode.cs" />
+    <Compile Include="Command_SetHarvestProportion.cs" />
     <Compile Include="Command_SetHarvestSetting.cs" />
     <Compile Include="Patches\GrowingZoneGetGizmosPatcher.cs" />
     <Compile Include="HarvestManager_MapComponent.cs" />

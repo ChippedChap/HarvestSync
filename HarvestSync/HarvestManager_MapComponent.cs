@@ -73,7 +73,7 @@ namespace HarvestSync
 			float clamped = Mathf.Clamp01(proportion);
 			if (harvestProportions.ContainsKey(zone))
 			{
-				if (clamped == 0)
+				if (clamped == 1)
 				{
 					harvestProportions.Remove(zone);
 				}
@@ -82,7 +82,7 @@ namespace HarvestSync
 					harvestProportions[zone] = proportion;
 				}
 			}
-			else if (clamped != 0)
+			else if (clamped != 1)
 			{
 				harvestProportions.Add(zone, proportion);
 			}

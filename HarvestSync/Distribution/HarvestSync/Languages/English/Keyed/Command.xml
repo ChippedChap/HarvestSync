@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	<SetHarvestSettingRoot>Harvest:\n{0}</SetHarvestSettingRoot>
-	<SetHarvestSettingRootSync>Harvest:\n{0} {1}%</SetHarvestSettingRootSync>
+	<SetHarvestSettingDescFirstLine>Click to switch harvest mode.</SetHarvestSettingDescFirstLine>
+	
+	<SetHarvestProportionLabel>Harvest at:\n{0}%</SetHarvestProportionLabel>
+	<SetHarvestProportionDesc>Set how many plants need to be fully grown for this zone to be harvested.\n\nCurrently set to {0}% or {1} of {2} plants.</SetHarvestProportionDesc>
+	
+	<SetHarvestProportionSliderText>Set harvest % to {0}.\nHarvest when {1} out of {2} plants grown.</SetHarvestProportionSliderText>
+	
+	<WarningHarvestSetToZero>Cannot set to harvest when 0 plants are grown.</WarningHarvestSetToZero>
 	
 	<SettingAlwaysHarvest>Always</SettingAlwaysHarvest>
 	<SettingNeverHarvest>Never</SettingNeverHarvest>
