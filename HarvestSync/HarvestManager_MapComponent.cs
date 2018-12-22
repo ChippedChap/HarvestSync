@@ -14,7 +14,7 @@ namespace HarvestSync
 		private List<Zone> areasForSaving = new List<Zone>();
 		private List<HarvestSetting> settingsForSaving = new List<HarvestSetting>();
 
-		private Dictionary<Zone, float> harvestProportions = new Dictionary<Zone, float>();
+		private Dictionary<Zone, float> proportionsOfAllCells = new Dictionary<Zone, float>();
 		private List<Zone> areasWithProportionsForSaving = new List<Zone>();
 		private List<float> proportionsForSaving = new List<float>();
 
@@ -30,7 +30,7 @@ namespace HarvestSync
 		public override void ExposeData()
 		{
 			Scribe_Collections.Look(ref harvestSettings, "harvestSyncHarvestSettings", LookMode.Reference, LookMode.Value, ref areasForSaving, ref settingsForSaving);
-			Scribe_Collections.Look(ref harvestProportions, "harvestSyncHarvestProportyions", LookMode.Reference, LookMode.Value, ref areasWithProportionsForSaving, ref proportionsForSaving);
+			Scribe_Collections.Look(ref proportionsOfAllCells, "harvestSyncHarvestProportyions", LookMode.Reference, LookMode.Value, ref areasWithProportionsForSaving, ref proportionsForSaving);
 			StripNullKeys();
 		}
 
@@ -71,20 +71,20 @@ namespace HarvestSync
 		public void SetHarvestProportion(Zone zone, float proportion)
 		{
 			float clamped = Mathf.Clamp01(proportion);
-			if (harvestProportions.ContainsKey(zone))
+			if (proportionsOfAllCells.ContainsKey(zone))
 			{
-				if (clamped == 1)
+				if (clamped == 0)
 				{
-					harvestProportions.Remove(zone);
+					proportionsOfAllCells.Remove(zone);
 				}
 				else
 				{
-					harvestProportions[zone] = proportion;
+					proportionsOfAllCells[zone] = proportion;
 				}
 			}
-			else if (clamped != 1)
+			else if (clamped != 0)
 			{
-				harvestProportions.Add(zone, proportion);
+				proportionsOfAllCells.Add(zone, proportion);
 			}
 			RecalculateFullyGrownZones(false);
 		}
@@ -96,7 +96,7 @@ namespace HarvestSync
 
 		public float GetProportion(Zone zone)
 		{
-			return (harvestProportions.ContainsKey(zone)) ? harvestProportions[zone] : 1f;
+			return (proportionsOfAllCells.ContainsKey(zone)) ? proportionsOfAllCells[zone] : 0f;
 		}
 
 		public bool CanHarvestZone(Zone zone)
@@ -137,9 +137,9 @@ namespace HarvestSync
 			{
 				if (zoneKey == null) harvestSettings.Remove(zoneKey);
 			}
-			foreach (Zone zoneKey in new List<Zone>(harvestProportions.Keys))
+			foreach (Zone zoneKey in new List<Zone>(proportionsOfAllCells.Keys))
 			{
-				if (zoneKey == null) harvestProportions.Remove(zoneKey);
+				if (zoneKey == null) proportionsOfAllCells.Remove(zoneKey);
 			}
 		}
 	}

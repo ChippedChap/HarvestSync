@@ -15,7 +15,7 @@ namespace HarvestSync
 			defaultDesc = "SetHarvestSettingDescFirstLine".Translate();
 			defaultDesc += Environment.NewLine;
 			defaultDesc += Environment.NewLine;
-			defaultDesc += ZoneSetting.GetDescription(ProportionAsPercent, ProportionNumber, numIntendedPlants);
+			defaultDesc += ZoneSetting.GetDescription(ProportionNumber);
 			icon = TexCommand.ForbidOff;
 		}
 

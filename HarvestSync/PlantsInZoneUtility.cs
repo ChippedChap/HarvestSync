@@ -24,6 +24,19 @@ namespace HarvestSync
 			return false;
 		}
 
+		public static int GetNumberImmaturePlants(this Zone zone)
+		{
+			ThingDef[] intendedPlants = GetIntendedPlants(zone);
+			int numberHarvestable = 0;
+			for (int i = 0; i < zone.Cells.Count; i++)
+			{
+				Plant plant = zone.Cells[i].GetPlant(zone.Map);
+				if (plant == null) continue;
+				if (intendedPlants.Contains(plant.def) && !plant.HarvestableNow) numberHarvestable++;
+			}
+			return numberHarvestable;
+		}
+
 		public static ThingDef[] GetIntendedPlants(this Zone zone)
 		{
 			if (zone is Zone_Growing growingZone)
@@ -46,22 +59,23 @@ namespace HarvestSync
 			return number;
 		}
 
-		public static bool PlantsMatureInZone(this Zone zone, float proportion)
+		public static bool PlantsMatureInZone(this Zone zone, int ignoreNumber = 0)
 		{
 			ThingDef[] plantDefsGrowing = GetIntendedPlants(zone);
-			int intended = 0;
-			int harvestableIntended = 0;
+			int immatureIntendedPlants = 0;
 			for (int i = 0; i < zone.Cells.Count; i++)
 			{
 				Plant plant = zone.Cells[i].GetPlant(zone.Map);
 				if (plant == null) continue;
-				if (plantDefsGrowing.Contains(plant.def))
-				{
-					intended++;
-					if (plant.HarvestableNow) harvestableIntended++;
-				}
+				if (plantDefsGrowing.Contains(plant.def) && !plant.HarvestableNow) immatureIntendedPlants++;
 			}
-			return harvestableIntended >= GetProportionNumber(intended, proportion);
+			return immatureIntendedPlants <= ignoreNumber;
+		}
+
+		public static bool PlantsMatureInZone(this Zone zone, float proportionNeeded)
+		{
+			int ignore = GetProportionNumber(zone.Cells.Count, proportionNeeded);
+			return PlantsMatureInZone(zone, ignore);
 		}
 	}
 }

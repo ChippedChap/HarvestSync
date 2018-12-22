@@ -10,8 +10,8 @@ namespace HarvestSync
 
 		public Command_SetHarvestProportion(Zone zone, HarvestManager_MapComponent manager) : base(zone, manager)
 		{
-			defaultLabel = "SetHarvestProportionLabel".Translate(ProportionAsPercent);
-			defaultDesc = "SetHarvestProportionDesc".Translate(ProportionAsPercent, ProportionNumber, numIntendedPlants);
+			defaultLabel = "SetHarvestProportionLabel".Translate(ProportionNumber);
+			defaultDesc = "SetHarvestProportionDesc".Translate(ProportionNumber, ProportionAsPercent);
 			icon = TexCommand.ForbidOff;
 		}
 
@@ -28,8 +28,23 @@ namespace HarvestSync
 
 		private string GetSliderText(int percent)
 		{
-			int currentNumber = PlantsInZoneUtility.GetProportionNumber(numIntendedPlants, percent / 100f);
-			return "SetHarvestProportionSliderText".Translate(percent, currentNumber, numIntendedPlants);
+			int currentNumber = PlantsInZoneUtility.GetProportionNumber(growingZone.Cells.Count, percent / 100f);
+
+			string futureStatusMessage = "";
+			if (percent == 100)
+			{
+				futureStatusMessage = "HarvestProportionResultRedundant".Translate();
+			}
+			else if (immatureIntended <= currentNumber)
+			{
+				futureStatusMessage = "HarvestProportionResultHarvestable".Translate();
+			}
+			else
+			{
+				futureStatusMessage = "HarvestProportionResultNotHarvestable".Translate();
+			}
+
+			return "SetHarvestProportionSliderText".Translate(currentNumber, percent, futureStatusMessage);
 		}
 
 		private void NewSetting(int newPercent)
