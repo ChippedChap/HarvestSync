@@ -10,6 +10,7 @@ namespace HarvestSync
 
 		public Command_SetHarvestProportion(Zone zone, HarvestManager_MapComponent manager) : base(zone, manager)
 		{
+			groupKey = 1123415;
 			defaultLabel = "SetHarvestProportionLabel".Translate(ProportionNumber);
 			defaultDesc = "SetHarvestProportionDesc".Translate(ProportionNumber, ProportionAsPercent);
 			icon = TexCommand.ForbidOff;
