@@ -12,10 +12,7 @@ namespace HarvestSync
 		public Command_SetHarvestMode(Zone zone, HarvestManager_MapComponent manager) : base(zone, manager)
 		{
 			defaultLabel = "SetHarvestSettingRoot".Translate(ZoneSetting.Translate());
-			defaultDesc = "SetHarvestSettingDescFirstLine".Translate();
-			defaultDesc += Environment.NewLine;
-			defaultDesc += Environment.NewLine;
-			defaultDesc += ZoneSetting.GetDescription(ProportionNumber);
+			defaultDesc = ZoneSetting.GetDescription(ProportionNumber);
 			icon = TexCommand.ForbidOff;
 		}
 

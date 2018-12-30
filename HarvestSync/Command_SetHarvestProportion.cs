@@ -12,7 +12,7 @@ namespace HarvestSync
 		{
 			groupKey = 1123415;
 			defaultLabel = "SetHarvestProportionLabel".Translate(ProportionNumber);
-			defaultDesc = "SetHarvestProportionDesc".Translate(ProportionNumber, ProportionAsPercent);
+			defaultDesc = HarvestSetting.SyncHarvest.GetDescription(ProportionNumber);
 			icon = TexCommand.ForbidOff;
 		}
 

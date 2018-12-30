@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	<SetHarvestSettingRoot>Harvest:\n{0}</SetHarvestSettingRoot>
-	<SetHarvestSettingDescFirstLine>Click to switch harvest mode.</SetHarvestSettingDescFirstLine>
 	
 	<SetHarvestProportionLabel>Ignoring {0} Plants</SetHarvestProportionLabel>
 	<SetHarvestProportionDesc>Currently ignoring {0} plants, or {1}% of all zone cells.</SetHarvestProportionDesc>
@@ -18,5 +17,6 @@
 	
 	<SettingAlwaysHarvestDesc>Plants in this zone will always be harvested.</SettingAlwaysHarvestDesc>
 	<SettingNeverHarvestDesc>Plants in this zone will never be harvested.</SettingNeverHarvestDesc>
-	<SettingSyncHarvestDesc>Plants in this zone will be harvested when all plants are harvestable. Ignoring {0} plants.</SettingSyncHarvestDesc>
+	<SettingSyncHarvestDesc>Plants in this zone will be harvested when all plants {0}are harvestable.</SettingSyncHarvestDesc>
+	<SettingSyncHarvestDescException>(except {0}) </SettingSyncHarvestDescException>
 </LanguageData>

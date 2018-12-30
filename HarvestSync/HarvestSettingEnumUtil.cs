@@ -25,7 +25,9 @@ namespace HarvestSync
 			string baseString = harvestSettingPrefix + setting.ToString() + harvestDescriptionSuffix;
 			if (setting == HarvestSetting.SyncHarvest)
 			{
-				return baseString.Translate(ignore);
+				string exceptionString = "";
+				if (ignore != 0) exceptionString = "SettingSyncHarvestDescException".Translate(ignore);
+				return baseString.Translate(exceptionString);
 			}
 			return baseString.Translate();
 		}
