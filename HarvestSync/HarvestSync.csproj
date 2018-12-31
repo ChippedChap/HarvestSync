@@ -61,6 +61,7 @@
     <Compile Include="PlantsInZoneUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\ZoneDeleteNotifier.cs" />
+    <Compile Include="TextureLoader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
