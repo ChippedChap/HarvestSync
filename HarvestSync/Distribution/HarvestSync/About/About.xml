@@ -4,10 +4,8 @@
 	<name>Harvest Sync</name>
 	<author>ChippedChap</author>
 	<url>https://github.com/ChippedChap/HarvestSync</url>
-	<targetVersion>1.0.0</targetVersion>
-	<description>Version 1.0.1
-
-A mod that lets you set certain zones to only be harvested when all plants in the zone has fully grown.
+	<supportedVersions><li>1.0</li></supportedVersions>
+	<description>A mod that lets you set certain zones to only be harvested when all plants in the zone has fully grown.
 	
 A version that works with hydroponics will be coming soon!
 	
