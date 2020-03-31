@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System.Reflection;
 using Verse;
 
@@ -9,7 +9,7 @@ namespace HarvestSync
 	{
 		static HarvestSyncInitializer()
 		{
-			var harmonyInstance = HarmonyInstance.Create("com.chippedchap.harvestsync");
+			var harmonyInstance = new Harmony("ChippedChap.HarvestSync");
 			harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
 		}
 	}

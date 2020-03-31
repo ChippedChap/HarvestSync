@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
+	<packageId>ChippedChap.HarvestSync</packageId>
 	<name>Harvest Sync</name>
 	<author>ChippedChap</author>
 	<url>https://github.com/ChippedChap/HarvestSync</url>
-	<supportedVersions><li>1.0</li></supportedVersions>
+	<supportedVersions><li>1.1</li></supportedVersions>
 	<description>A mod that lets you set certain zones to only be harvested when all plants in the zone has fully grown.
 	
 A version that works with hydroponics will be coming soon!
@@ -23,4 +24,12 @@ If something makes a plant instantaneously come to maturity or die, there may be
 	
 Please report any problems you find with this mod.
 	</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
 </ModMetaData>

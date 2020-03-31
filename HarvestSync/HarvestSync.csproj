@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HarvestSync</RootNamespace>
     <AssemblyName>HarvestSync</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -35,18 +38,17 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>LocalDev\Refs\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\BlueprintTotalsTooltip\BlueprintTotalsTooltip\LocalDev\Refs\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>LocalDev\Refs\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\BlueprintTotalsTooltip\BlueprintTotalsTooltip\LocalDev\Refs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\BlueprintTotalsTooltip\BlueprintTotalsTooltip\LocalDev\Refs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\BlueprintTotalsTooltip\BlueprintTotalsTooltip\LocalDev\Refs\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +68,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>@echo $(Targetname)
-SET ModName=HarvestSync
+SET ModName=BlueprintTotalsTooltip
 SET UsingHarmony=true
-SET UsingHugsLib=false
+SET UsingHugsLib=true
 
 @echo ...
 @echo set lpath vars from LocalDev storage...
@@ -76,15 +78,9 @@ set /p RIM_DIR=&lt;"$(ProjectDir)LocalDev\rim_dir.txt"
 set /p ZA_DIR=&lt;"$(ProjectDir)LocalDev\7za_dir.txt"
 set /p DIST_DIR=&lt;"$(ProjectDir)LocalDev\dist_dir.txt"
 
-@echo Copying RimWorld assemblies from "%25RIM_DIR%25\RimWorldWin_Data\Managed" to "$(ProjectDir)LocalDev\Refs" folder...
-copy /Y "%25RIM_DIR%25\RimWorldWin64_Data\Managed\Assembly-CSharp.dll" "$(ProjectDir)LocalDev\Refs"
-copy /Y "%25RIM_DIR%25\RimWorldWin64_Data\Managed\Assembly-CSharp-firstpass.dll" "$(ProjectDir)LocalDev\Refs"
-copy /Y "%25RIM_DIR%25\RimWorldWin64_Data\Managed\UnityEngine.dll" "$(ProjectDir)LocalDev\Refs"
-copy /Y "%25RIM_DIR%25\RimWorldWin64_Data\Managed\UnityEngine.UI.dll" "$(ProjectDir)LocalDev\Refs"
-
 if %25UsingHarmony%25 EQU true (
-@echo Copying Harmony assembly from "%25RIM_DIR%25\Mods\HugsLib\Assemblies" to "$(ProjectDir)LocalDev\Refs"  folder...
-copy /Y "%25RIM_DIR%25\Mods\HugsLib\Assemblies\0Harmony.dll" "$(ProjectDir)LocalDev\Refs"
+@echo Copying Harmony assembly from "%25RIM_DIR%25\Mods\Harmony\v1.1\Assemblies\0Harmony.dll" to "$(ProjectDir)LocalDev\Refs"  folder...
+copy /Y "%25RIM_DIR%25\Mods\Harmony\v1.1\Assemblies\0Harmony.dll" "$(ProjectDir)LocalDev\Refs"
 )
 if %25UsingHugsLib%25 EQU true (
 @echo Copying HugsLib assembly from "%25RIM_DIR%25\Mods\HugsLib\Assemblies" to "$(ProjectDir)LocalDev\Refs"  folder...
